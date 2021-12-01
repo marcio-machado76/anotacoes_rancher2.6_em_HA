@@ -7,7 +7,7 @@
   - Ter acesso ssh às instancias EC2.
   - 
  
- ##  Próximos passos - instancias EC2
+ ##  Próximos passos - instancias EC2.
   - crie 3 instâncias EC2 em sua conta AWS em zonas de disponibilidade diferentes, exemplo (us-east-1a, us-east-1b e us-east-1c), neste lab estou utilizando com Ubuntu 20.04.
   - Crie 2 target groups rancher-80 e rancher-443 apontando para as máquinas do cluster.
   - Crie o load balancer NLB com dois listeners apontando para os target groups rancher-80 e rancher-443.
@@ -16,7 +16,7 @@
   - Crie um security group para que possa instalar o cluster a partir do seu IP via rke (all ports) caso esteja utilizando uma máquina local(fora da AWS).
 
 
-## Preparando as instancias EC2
+## Preparando as instancias EC2.
   - Instalar o docker nas 3 instancias.
   - Neste lab estou executando a instalação diretamente do user_data na criação da instancia e só alterando o nome do host no comando do script abaixo na linnha `hostnamectl set-hostname` e os nomes `k8s-1`, `k8s-2` e `k8s-3` para uma melhor identificação.
 
@@ -37,7 +37,7 @@ clear
 ```
 
 
-## Com tudo instalado vamos configurar o RKE
+## Com tudo instalado vamos configurar o RKE.
  #### Preparando e instalando o cluster (da sua máquina) - criando configuração. Execute o comando abaixo para criar o manifesto do cluster.
 ```
 rke config
@@ -91,7 +91,7 @@ INFO[0255] Finished building Kubernetes cluster successfully
 export KUBECONFIG=kube_config_cluster.yml
 ```
 
-#### Verifique se o cluster está funcionando
+#### Verifique se o cluster está funcionando.
 ```
 kubctl get nodes                
 kubectl get pods --all-namespaces     
@@ -99,7 +99,7 @@ kubectl get pods --all-namespaces
 
 
 #### Preparando e instalando o cert-manager neste cluster (maquina que irá gerenciar).
-#### Instale os crds do cert-manager
+#### Instale os crds do cert-manager.
 ```
 kubectl apply -f https://github.com/jetstack/cert-manager/releases/download/v1.6.1/cert-manager.crds.yaml
 ```
@@ -116,7 +116,7 @@ helm repo update
 kubectl create namespace cert-manager
 ```
 
-#### Instalar o cert-mamanger
+#### Instalar o cert-mamanger.
 ```
 helm install cert-manager jetstack/cert-manager --namespace cert-manager --create-namespace --version v1.6.1
 ```
@@ -153,7 +153,7 @@ kubectl apply -f issuer.yml
 
 
 
-#### saída esperada
+#### Saída esperada.
 ```
 clusterissuer.cert-manager.io/letsencrypt-prod created
 ```
@@ -165,7 +165,7 @@ clusterissuer.cert-manager.io/letsencrypt-prod created
 kubectl get clusterissuer 
 ```
 
-#### Saída esperada
+#### Saída esperada.
 ```
 NAME               READY   AGE
 letsencrypt-prod   True    48s
