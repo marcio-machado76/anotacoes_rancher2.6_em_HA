@@ -11,7 +11,7 @@
   - crie 3 instâncias EC2 em sua conta AWS em zonas de disponibilidade diferentes, exemplo (us-east-1a, us-east-1b e us-east-1c), neste lab estou utilizando com Ubuntu 20.04.
   - Crie 2 target groups rancher-80 e rancher-443 apontando para as máquinas do cluster.
   - Crie o load balancer NLB com dois listeners apontando para os target groups rancher-80 e rancher-443.
-  - Crie uma entrada de dns no Route53 rancher.seudominio.tld apontando para o CNAME do Load Balancer.
+  - Crie uma entrada de dns no Route53 rancher.seudominio.tld, do tipo CNAME, apontando para o Load Balancer.
   - Crie um security group para liberar acesso a porta 80 e 443 as máquinas do cluster.
   - Crie um security group para que possa instalar o cluster a partir do seu IP via rke (all ports) caso esteja utilizando uma máquina local(fora da AWS).
 
