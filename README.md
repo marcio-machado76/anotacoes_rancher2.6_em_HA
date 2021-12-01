@@ -39,7 +39,9 @@ clear
 
 ## Com tudo instalado vamos configurar o RKE
  #### Preparando e instalando o cluster (da sua máquina) - criando configuração. Execute o comando abaixo para criar o manifesto do cluster.
-  rke config
+```
+rke config
+```
 
 #### Ele vai te fazer umas perguntinhas, cadastre os nodes, aponte o local da sua chave ssh, a mesma que usou nas EC2, forneça todos os dados necessários como ip da instancia, usuário, as roles(que neste lab estou usando os 3 nodes como controlplane, worker e etcd).
 #### Abaixo sehue um exemplo:
@@ -75,33 +77,49 @@ clear
 
 #### O comando `rke config` cria o arquivo `cluster.yml` que contém todas as configurações do cluster. Este arquivo pode ser modificado de acordo com a necessidade, novos nodes podem ser adicionados, modificados e até removidos.
 #### Agora que os nodes já estão cadastrados, vamos começar o provisionamento executando o comando abaixo:
+```
 rke up —config cluster.yml
+```
 
 #### Após instalar verá a seguinte mensagem (se tudo der certo).
+```
 INFO[0255] Finished building Kubernetes cluster successfully
+```
 
 #### Configure o kubectl - Se preferir adicione também a linha abaixo no `~/.bashrc` do usuário.
+```
 export KUBECONFIG=kube_config_cluster.yml
+```
 
 #### Verifique se o cluster está funcionando
+```
 kubctl get nodes                
-kubectl get pods --all-namespaces               
+kubectl get pods --all-namespaces     
+```
 
 
 #### Preparando e instalando o cert-manager neste cluster (maquina que irá gerenciar).
 #### Instale os crds do cert-manager
+```
 kubectl apply -f https://github.com/jetstack/cert-manager/releases/download/v1.6.1/cert-manager.crds.yaml
+```
 
 
 #### Adicione o repo e atualize o índices.
+```
 helm repo add jetstack https://charts.jetstack.io              
 helm repo update
+```
 
 #### Criar o namespace cert-manager.
+```
 kubectl create namespace cert-manager
+```
 
 #### Instalar o cert-mamanger
+```
 helm install cert-manager jetstack/cert-manager --namespace cert-manager --create-namespace --version v1.6.1
+```
 
 #### Crie o cluster issuer, pois sem isso ele não gera os certs via Let's Encrypt. No exemplo abaixo é necessário definir seu e-mail, coloquei o nome do arquivo de issuer.yml.
 
@@ -129,46 +147,59 @@ spec:
 
 
 #### Após criar o arquivo execute o comando:
+```
 kubectl apply -f issuer.yml
+```
 
 
 
 #### saída esperada
+```
 clusterissuer.cert-manager.io/letsencrypt-prod created
+```
 
 
 
 #### Verifique se está ok.
+```
 kubectl get clusterissuer 
+```
 
 #### Saída esperada
+```
 NAME               READY   AGE
 letsencrypt-prod   True    48s
+```
 #### se estiver mostrando “True” deu certo!
 
 
 
 #### Preparando e instalando o rancher neste cluster (maquina que irá gerenciar), adicione o repo e atualize os índices.
+```
 helm repo add rancher-latest https://releases.rancher.com/server-charts/latest              
 helm repo update              
-
+```
 
 
 #### Criar o namespace cattle-system.
+```
 kubectl create namespace cattle-system
-
+```
 
 #### instalar o rancher.
+```
 helm install rancher rancher-latest/rancher \
   --namespace cattle-system \
   --set hostname=rancher.cloud-na-veia.cf \
   --set replicas=3 \
   --set ingress.tls.source=letsEncrypt \
   --set letsEncrypt.email=marcio.mmachado1976@gmail.com
-
+```
 
 #### Verifique os pods do rancher.
+```
 kubectl get pods -n cattle-system
+```
 
 #### Após o Helm instalar o rancher você verá a saída do comando para pegar a senha gerada para o primeiro acesso, depois disso, acesse o rancher via web através da URL definida e siga os procedimentos para trocar a senha e iniciar o uso do seu rancher.
 
