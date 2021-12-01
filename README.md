@@ -205,18 +205,14 @@ kubectl get pods -n cattle-system
 
 
 
-#### Ref: 
-- RKE e Rancher
-  - <https://rancher.com/docs/rancher/v2.6/en/installation/resources/k8s-tutorials/infrastructure-tutorials/infra-for-ha/>
+#### Referências: 
+- <https://rancher.com/docs/rancher/v2.6/en/installation/resources/k8s-tutorials/infrastructure-tutorials/infra-for-ha/>
 
-  - <https://rancher.com/docs/rancher/v2.6/en/installation/install-rancher-on-k8s/>
+- <https://rancher.com/docs/rancher/v2.6/en/installation/install-rancher-on-k8s/>
 
-- Helm - rancher via helm
-  - <https://artifacthub.io/packages/helm/rancher-stable/rancher>
+- <https://artifacthub.io/packages/helm/rancher-stable/rancher>
 
-
-- Helm cert-manager
-  - <https://artifacthub.io/packages/helm/cert-manager/cert-manager>
+- <https://artifacthub.io/packages/helm/cert-manager/cert-manager>
 
 
 
