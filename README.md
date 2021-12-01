@@ -1,5 +1,7 @@
 # A ideia deste lab de testes é instalar um Rancher em HA, cluster de 3 nodes, usando instâncias AWS EC2.
 
+- [x] Status:  Em desenvolvimento - fase de testes.
+
 ## Para este cenário é necessário ter uma conta na AWS e uma máquina para gerenciar o cluster com os seguintes requisitos:
   - Ter o Kubectl instalado.
   - Ter o RKE instalado.
