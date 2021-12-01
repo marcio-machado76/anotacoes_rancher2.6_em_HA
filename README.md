@@ -1,0 +1,1 @@
+# anotacoes_rancher2.6_em_HA
