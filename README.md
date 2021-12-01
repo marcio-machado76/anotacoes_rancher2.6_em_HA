@@ -44,7 +44,7 @@ rke config
 ```
 
 #### Ele vai te fazer umas perguntinhas, cadastre os nodes, aponte o local da sua chave ssh, a mesma que usou nas EC2, forneça todos os dados necessários como ip da instancia, usuário, as roles(que neste lab estou usando os 3 nodes como controlplane, worker e etcd).
-#### Abaixo sehue um exemplo:
+#### Abaixo segue um exemplo:
 
 ```
 [+] Cluster Level SSH Private Key Path [~/.ssh/id_rsa]:
