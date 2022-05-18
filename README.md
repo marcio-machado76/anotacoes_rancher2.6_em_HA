@@ -1,4 +1,4 @@
-# A ideia deste lab de testes é instalar um Rancher em HA, cluster de 3 nodes, usando instâncias AWS EC2.
+# A ideia deste lab de testes é instalar o Rancher em HA, cluster de 3 nodes, usando instâncias AWS EC2.
 
 - [x] Status:  Em desenvolvimento - fase de testes.
 
